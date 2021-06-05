@@ -8,14 +8,13 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb+srv://dbUser:1212@cluster0.iseao.mongodb.net/cancer_db?authSource=admin&replicaSet=atlas-6yeevs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
 mongo = PyMongo(app)
 
-# Or set inline
-# mongo = PyMongo(app, uri="mongodb://localhost:27017/phone_app")
 
 
 @app.route("/")
 def index():
     # listings = mongo.db.listings.find_one()
-    return render_template("index.html")
+    cancer_dict = cancer_survival()
+    return render_template("index.html", data=cancer_dict)
 
 @app.route("/Visuals")
 def index():
@@ -28,12 +27,6 @@ def index():
     return render_template("About.html")
 
 
-# @app.route("/scrape")
-# def scraper():
-#     listings = mongo.db.listings
-#     listings_data = scrape_phone.scrape()
-#     listings.update({}, listings_data, upsert=True)
-#     return redirect("/", code=302)
 
 
 if __name__ == "__main__":
