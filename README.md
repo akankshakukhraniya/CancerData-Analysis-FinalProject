@@ -6,7 +6,7 @@ We’re a team ...
 
    - Here is a snapshot of the app: 
 
-<img src="Resources/snapshot.png" width="600" height="400">
+<img src="Images/snapshot.png" width="600" height="400">
 
 
 - ### The app's link for this project is [here](https://cancer-data.herokuapp.com/).
