@@ -14,6 +14,7 @@ def cancer_survival(cancer_dict):
     from sklearn.preprocessing import LabelEncoder
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
+    import pandas as pd
 
     # %%
     """
@@ -25,16 +26,17 @@ def cancer_survival(cancer_dict):
     ### Preprocessing Data 
     """
     
-    raw_df = pd.DataFrame.from_dict(cancer_dict)    
-    selected_df = raw_df[raw_df.columns]
-    selected_df = selected_df.drop(columns = 'Unnamed: 32')
+    selected_df = pd.DataFrame.from_dict(cancer_dict)    
+    # selected_df = raw_df[raw_df.columns]
+    # selected_df = selected_df.drop(columns = 'Unnamed: 32')
 
     # %%
     # Assign y (target) = Dependent variable
     y = selected_df["diagnosis"]
     # %%
     # Assign X (data) = Independent variables
-    X = selected_df.drop("diagnosis", axis=1)
+    X = selected_df.drop("_id", axis=1)
+    X = X.drop("diagnosis", axis=1)
     # %%
     """
     Split our data into training and testing

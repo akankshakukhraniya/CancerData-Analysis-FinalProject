@@ -1,2 +1,2 @@
 usr = "dbUser"
-pswd = "1212"
+pwd = "1212"
