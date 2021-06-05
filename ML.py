@@ -78,8 +78,8 @@ def cancer_survival(cancer_dict):
     # %%
     training_data_score = round(classifier.score(X_train_scaled, y_train)*100,4)
     testing_data_score = round(classifier.score(X_test_scaled, y_test)*100,4)
-    result = {
+    results = {
         "training_data_score" : training_data_score,
         "testing_data_score": testing_data_score
     }
-    return result
+    return results

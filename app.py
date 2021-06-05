@@ -1,27 +1,21 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import ML
+from config import usr, pwd
 
 
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "mongodb+srv://dbUser:1212@cluster0.iseao.mongodb.net/cancer_db?authSource=admin&replicaSet=atlas-6yeevs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
+app.config["MONGO_URI"] = "mongodb+srv://{usr}:{pswd}@cluster0.iseao.mongodb.net/cancer_db?authSource=admin&replicaSet=atlas-6yeevs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
 mongo = PyMongo(app)
-
 
 
 @app.route("/")
 def index():
-<<<<<<< HEAD
-    # listings = mongo.db.listings.find_one()
-    cancer_dict = cancer_survival()
-    return render_template("index.html", data=cancer_dict)
-=======
     cancer_dict = mongo.db.cancer_db.find_one()
     results = cancer_survival(cancer_dict)
-    return render_template("index.html", data = results)
->>>>>>> fa8f2cd16fb35e5a0637c30bf7ca56324dbc67cb
+    return render_template("index.html", data=results)
 
 @app.route("/Visuals")
 def index():
