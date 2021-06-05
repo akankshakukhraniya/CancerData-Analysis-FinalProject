@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import flash, Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import ML
 from config import usr, pwd
@@ -14,7 +14,7 @@ mongo = PyMongo(app)
 def index():
 
     # Use the 'cancer_db' database from Mongo
-    db = mongo.cancer_db
+    db = mongo.db.cancer_db
     cancer_dict = db.breast_data.find()
     results = ML.cancer_survival(cancer_dict)
     return render_template("index.html", data=results)
