@@ -20,13 +20,13 @@ def index():
     results = ML.cancer_survival(cancer_dict)
     return render_template("index.html", data=results)
 
-@app.route("/Visuals")
-def visuals():
-    return render_template("Visuals.html")
+# @app.route("/Visuals")
+# def visuals():
+#     return render_template("Visuals.html")
 
-@app.route("/About_us")
-def about():
-    return render_template("About.html")
+# @app.route("/About_us")
+# def about():
+#     return render_template("About.html")
 
 
 if __name__ == "__main__":
