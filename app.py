@@ -1,13 +1,14 @@
 from flask import flash, Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import ML
-from config import usr, pwd
+from config import usr, pwd, cluster, db_name # private information, cannot be shared
 
 
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = f"mongodb+srv://{usr}:{pwd}@cluster0.iseao.mongodb.net/cancer_db?authSource=admin&replicaSet=atlas-6yeevs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
+
+app.config["MONGO_URI"] = f"mongodb+srv://{usr}:{pwd}@{cluster}/{db_name}?authSource=admin&replicaSet=atlas-6yeevs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
 mongo = PyMongo(app)
 
 @app.route("/")

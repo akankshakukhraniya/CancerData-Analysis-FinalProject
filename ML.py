@@ -27,7 +27,7 @@ def cancer_survival(cancer_dict):
     """
     
     selected_df = pd.DataFrame.from_dict(cancer_dict)    
-
+    
     # # %%
     # # Assign y (target) = Dependent variable
     # # print(selected_df.columns)
