@@ -1,7 +1,7 @@
 from flask import flash, Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import ML
-from config import usr, pwd, cluster, db_name # private information, cannot be shared
+from private import usr, pwd, cluster, db_name # private information, cannot be shared
 
 
 app = Flask(__name__)
