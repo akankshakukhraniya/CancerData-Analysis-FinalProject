@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
+import ML
 
 
 app = Flask(__name__)
@@ -14,8 +15,9 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    # listings = mongo.db.listings.find_one()
-    return render_template("index.html")
+    cancer_dict = mongo.db.cancer_db.find_one()
+    results = cancer_survival(cancer_dict)
+    return render_template("index.html", data = results)
 
 @app.route("/Visuals")
 def index():
