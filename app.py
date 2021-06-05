@@ -5,7 +5,7 @@ from flask_pymongo import PyMongo
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/Breast_Cancer_db"
+app.config["MONGO_URI"] = "mongodb+srv://dbUser:1212@cluster0.iseao.mongodb.net/cancer_db?authSource=admin&replicaSet=atlas-6yeevs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
 mongo = PyMongo(app)
 
 # Or set inline
