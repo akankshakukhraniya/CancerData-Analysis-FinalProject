@@ -1,4 +1,4 @@
-def cancer_survival(cancer_dict):
+def breast_survival_test(cancer_df):
 
     # %%
     """
@@ -26,66 +26,58 @@ def cancer_survival(cancer_dict):
     ### Preprocessing Data 
     """
     
-    selected_df = pd.DataFrame.from_dict(cancer_dict)    
-    
-    # # %%
-    # # Assign y (target) = Dependent variable
-    # # print(selected_df.columns)
-    # y = selected_df['diagnosis']
-    # # y = selected_df.iloc[:,1]
-    # # %%
-    # # Assign X (data) = Independent variables
-    # X = selected_df.drop("_id", axis=1)
-    # X = X.drop("diagnosis", axis=1)
-    # # %%
-    # """
-    # Split our data into training and testing
-    # """
+    # %%
+    # Assign y (target) = Dependent variable
+    y = cancer_df['diagnosis']
+    # %%
+    # Assign X (data) = Independent variables
+    X = cancer_df.drop("_id", axis=1)
+    X = X.drop("diagnosis", axis=1)
+    # %%
+    """
+    Split our data into training and testing
+    """
 
-    # # %%
-    # X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
+    # %%
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
 
-    # # %%
-    # """
-    # Scale the data
-    # """
+    # %%
+    """
+    Scale the data
+    """
 
-    # # %%
-    # X_scaler = StandardScaler().fit(X_train)
-    # X_train_scaled = X_scaler.transform(X_train)
-    # X_test_scaled = X_scaler.transform(X_test)
+    # %%
+    X_scaler = StandardScaler().fit(X_train)
+    X_train_scaled = X_scaler.transform(X_train)
+    X_test_scaled = X_scaler.transform(X_test)
 
-    # # %%
-    # """
-    # Create a Logistic Regression Model
-    # """
+    # %%
+    """
+    Create a Logistic Regression Model
+    """
 
-    # # %%
-    # from sklearn.linear_model import LogisticRegression
-    # classifier = LogisticRegression(max_iter=1000000)
+    # %%
+    from sklearn.linear_model import LogisticRegression
+    classifier = LogisticRegression(max_iter=1000000)
 
-    # # %%
-    # """
-    # Fit (train) the model using the training data
-    # """
+    # %%
+    """
+    Fit (train) the model using the training data
+    """
 
-    # # %%
-    # classifier.fit(X_train_scaled, y_train)
+    # %%
+    classifier.fit(X_train_scaled, y_train)
 
-    # # %%
-    # """
-    # Validate the model using the test data
-    # """
+    # %%
+    """
+    Validate the model using the test data
+    """
 
-    # # %%
-    # training_data_score = round(classifier.score(X_train_scaled, y_train)*100,4)
-    # testing_data_score = round(classifier.score(X_test_scaled, y_test)*100,4)
-    # results = {
-    #     "training_data_score" : training_data_score,
-    #     "testing_data_score": testing_data_score
-    # }
+    # %%
+    training_data_score = round(classifier.score(X_train_scaled, y_train)*100,4)
+    testing_data_score = round(classifier.score(X_test_scaled, y_test)*100,4)
     results = {
-        "col1" : 1,
-        "col2": 2
+        "training_data_score" : training_data_score,
+        "testing_data_score": testing_data_score
     }
     return results

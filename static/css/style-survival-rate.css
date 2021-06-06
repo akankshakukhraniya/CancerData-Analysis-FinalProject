@@ -43,8 +43,8 @@ body {
   margin: 0;
 }
 
-/* This CSS styles the ufo icon in the navbar */
-.nav-ufo {
+/* This CSS styles the survival-rate icon in the navbar */
+.nav-survival-rate {
   position: absolute;
   bottom: 5px;
   left: 150px;
@@ -53,7 +53,7 @@ body {
 }
 
 /* Adding styles to the aside and filter form */
-.ufo-form {
+.survival-rate-form {
   margin-top: 50px;
 }
 
