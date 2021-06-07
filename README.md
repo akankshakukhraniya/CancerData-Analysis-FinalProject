@@ -35,8 +35,8 @@ The visualizations the team generated told the story of ...
 
 
 ## Team Members
-* 1
-* 2
-* 3
-* 4
-* 5
+* 1 Luis Rojas
+* 2 Zack Rogers
+* 3 Hector Ladero
+* 4 Akanksha Kukhranyia
+* 5 Mariam Ahmad 
