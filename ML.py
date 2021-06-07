@@ -33,6 +33,7 @@ def breast_survival_test(cancer_df):
     # Assign X (data) = Independent variables
     X = cancer_df.drop("_id", axis=1)
     X = X.drop("diagnosis", axis=1)
+    stats_dict = X.describe().to_dict()
     # %%
     """
     Split our data into training and testing
@@ -76,8 +77,17 @@ def breast_survival_test(cancer_df):
     # %%
     training_data_score = round(classifier.score(X_train_scaled, y_train)*100,4)
     testing_data_score = round(classifier.score(X_test_scaled, y_test)*100,4)
+
+    # Make predictions with the hypertuned model
+    predictions = classifier.predict(X_test_scaled)
+    # Calculate classification report
+    from sklearn.metrics import classification_report
+    classification_report=classification_report(y_test, predictions, target_names=["benign","malignant"])
+
     results = {
         "training_data_score" : training_data_score,
-        "testing_data_score": testing_data_score
+        "testing_data_score": testing_data_score,
+        "stats_dict": stats_dict,
+        "classification_report": classification_report
     }
     return results
