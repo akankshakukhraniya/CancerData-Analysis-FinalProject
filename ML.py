@@ -82,12 +82,12 @@ def breast_survival_test(cancer_df):
     predictions = classifier.predict(X_test_scaled)
     # Calculate classification report
     from sklearn.metrics import classification_report
-    classification_report = classification_report(y_test, predictions, target_names=["benign","malignant"])
+    classification_report_dict = classification_report(y_test, predictions, target_names=["benign","malignant"], output_dict=True)
 
     results = {
         "training_data_score" : training_data_score,
         "testing_data_score": testing_data_score,
         "stats_dict": stats_dict,
-        "classification_report": classification_report
+        "classification_report": classification_report_dict
     }
     return results
