@@ -4,8 +4,7 @@ console.log(cancer_json);
 // Use D3 to select csr
 var csr = d3.select("#csr").select("h1");
 // Assign value from data
-console.log(csr);
-csr_text = "You may have " + cancer_json.csr + " chance to survive !"
+var csr_text = "You may have " + cancer_json.csr + " chance to survive !";
 csr.html(csr_text);
 
 // Select the button
@@ -26,12 +25,13 @@ function runCalculation() {
     d3.event.preventDefault();
     
     // Select the input elements 
-    var input_race_origin = d3.select("#race_origin");
+    var input_race_origin = d3.select("#race_origin").property("value");
+    console.log(input_race_origin);
 
     if (input_race_origin) {
-        var input_survival_months = d3.select("#survival_months");
-        var input_tumour_classification= d3.select("#tumour_classification");
-        var input_tumor_size = d3.select("#tumor_size");
+        var input_survival_months = d3.select("#survival_months").property("value");
+        var input_tumour_classification= d3.select("#tumour_classification").property("value");
+        var input_tumor_size = d3.select("#tumor_size").property("value");
         var URL = "https://cancer-data.herokuapp.com/" + input_race_origin + "/" + input_survival_months + "/" + input_tumour_classification + "/" + input_tumor_size;
     }
     else {
