@@ -136,8 +136,26 @@
   </div>
 
 
+  <div id="barchart"></div>
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.0.0.min.js"></script>
 <script>
+  // var cancer_data = '{{ ( data ) | safe }}';
   var cancer_data = '{{ data | tojson | safe }}';
+
+
+  var data = [
+  {
+    
+    x: ['testing_data_score'],
+    y: [cancer_data.testing_data_score],
+    type: 'bar'
+  }
+];
+
+Plotly.newPlot('barchart', data);
+
 </script>
 <script type="text/javascript" src="/static/js/app.js"></script>  
 

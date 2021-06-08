@@ -17,6 +17,8 @@ def index():
     df= pd.DataFrame(list(cursor))
     print(df.head())
     results = ML.breast_survival_test(df)
+
+    print(results)
     return render_template("index.html", data=results)
 
 @app.route("/<race_origin>/<survival_months>/<tumour_classification>/<tumor_size>") 
