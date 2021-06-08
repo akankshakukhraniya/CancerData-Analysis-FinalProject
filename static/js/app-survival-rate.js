@@ -5,7 +5,7 @@ console.log(cancer_json);
 var csr = d3.select("#csr").select("h1");
 // Assign value from data
 console.log(csr);
-csr_text = "You have " + cancer_json.csr + " chance to survive !"
+csr_text = "You may have " + cancer_json.csr + " chance to survive !"
 csr.html(csr_text);
 
 // Select the button
@@ -39,6 +39,6 @@ function runCalculation() {
     }
     console.log(URL);
    
-    windows.open(URL,"_self");
+    window.open(URL,"_self");
 
 };
