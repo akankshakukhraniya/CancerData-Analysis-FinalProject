@@ -82,8 +82,12 @@
     </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
-  <script src="/static/js/data-survival-rate.js"></script>
-  <script src="/static/js/app-survival-rate.js"></script>
+  <script>
+    var cancer_data = '{{ data | tojson | safe }}';
+  </script>
+  <script type="text/javascript" src="/static/js/data-survival-rate.js"></script>
+  <script type="text/javascript" src="/static/js/app-survival-rate.js"></script>
+
 </body>
 
 </html>
