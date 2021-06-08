@@ -15,13 +15,15 @@ mongo = PyMongo(app, uri=MONGO_URI)
 def index():
     cursor = mongo.db.breast_data.find()
     df= pd.DataFrame(list(cursor))
+    print(df.head())
     results = ML.breast_survival_test(df)
     return render_template("index.html", data=results)
 
-@app.route("/<diagnosis_year>/<race_origin>/<survival_months>/<tumour_classification>/<tumor_size>")
+@app.route("/<diagnosis_year>/<race_origin>/<survival_months>/<tumour_classification>/<tumor_size>") 
 def csr(diagnosis_year,race_origin,survival_months,tumour_classification,tumor_size):
     cursor = mongo.db.seer_data.find()
     df= pd.DataFrame(list(cursor))
+    print(df.head())
     results = ML.cancer_survival_rate(df,diagnosis_year,race_origin,survival_months,tumour_classification,tumor_size)
     return render_template("CancerSurvivalRate.html", data=results)
 

@@ -122,11 +122,17 @@ def cancer_survival_rate(df,diagnosis_year,race_origin,survival_months,tumour_cl
     
     # %%
     # Assign y (target) = Dependent variable
-    y = cleaned_df["status"]
+    y = df["status"]
     # %%
     # Assign X (data) = Independent variables
-    X = cleaned_df.drop("status", axis=1)
-    stats_dict = X.describe().to_dict()
+    X = df.drop("status", axis=1)
+    le = LabelEncoder()
+    X['race_origin'] = le.fit_transform(X['race_origin'])
+    X['survival_months'] = le.fit_transform(X['survival_months'])
+    X['tumour_classification'] = le.fit_transform(X['tumour_classification'])
+    X['death_cause'] = le.fit_transform(X['death_cause'])
+    X['death_classification'] = le.fit_transform(X['death_classification'])
+    X['tumor_size'] = le.fit_transform(X['tumor_size'])
     # %%
     """
     Split our data into training and testing
@@ -180,7 +186,7 @@ def cancer_survival_rate(df,diagnosis_year,race_origin,survival_months,tumour_cl
     results = {
         "training_data_score" : training_data_score,
         "testing_data_score": testing_data_score,
-        "stats_dict": stats_dict,
         "classification_report": classification_report_dict
     }
+    # results = 0
     return results
