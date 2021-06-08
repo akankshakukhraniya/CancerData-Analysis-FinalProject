@@ -1,76 +1,44 @@
 var cancer_json = JSON.parse(cancer_data);
 console.log(cancer_json);
 
-// Function to display data
-function showData (tableData, tbody) {
-    tableData.forEach(rowData => {
-        // Append one table row `tr` to the table body
-        var rowTable = tbody.append("tr");
-    
-        Object.entries(rowData).forEach(([key, value]) => {
-            // // Append one cell for the datetime m/d/yyyy
-            var cellTable = rowTable.append("td")
-            cellTable.text(value);
-        });
-    });    
-};
-
-// Initialize variables from data.js
-var tableData = data;
-// Use D3 to select the table
-var table = d3.select("table");
-// Use d3 to create a bootstrap striped table
-// http://getbootstrap.com/docs/3.3/css/#tables-striped
-table.attr("class", "table table-striped");
-// Use D3 to select the table body
-var tbody = d3.select("tbody");
-
-// Display default dataset
-showData (tableData, tbody);
+// Use D3 to select csr
+var csr = d3.select("#csr").select("h1");
+// Assign value from data
+console.log(csr);
+csr_text = "You have " + cancer_json.csr + " chance to survive !"
+csr.html(csr_text);
 
 // Select the button
-var button = d3.select("#filter-btn");
+var button = d3.select("#csr-btn");
 // Select the form
 var form = d3.select("#form");
 
 // Create event handlers 
-button.on("click", runFilter);
-form.on("submit", runFilter);
+button.on("click", runCalculation);
+form.on("submit", runCalculation);
 
 // Complete the event handler function for the form
-function runFilter() {
+function runCalculation() {
     // Clear the table
-    tbody.html("");
+    csr.html("");
     
     // Prevent the page from refreshing
     d3.event.preventDefault();
     
-    // Default value to be displayed
-    var filteredData = tableData;
+    // Select the input elements 
+    var input_race_origin = d3.select("#race_origin");
 
-    // Select the input elements and get the raw HTML node
-    var inputDateTime = d3.select("#datetime");
-    var inputCity = d3.select("#city");
-    var inputState = d3.select("#state");
-    var inputCountry = d3.select("#country");
-    var inputShape = d3.select("#shape");
+    if (input_race_origin) {
+        var input_survival_months = d3.select("#survival_months");
+        var input_tumour_classification= d3.select("#tumour_classification");
+        var input_tumor_size = d3.select("#tumor_size");
+        var URL = "https://cancer-data.herokuapp.com/" + input_race_origin + "/" + input_survival_months + "/" + input_tumour_classification + "/" + input_tumor_size;
+    }
+    else {
+        var URL = "https://cancer-data.herokuapp.com/0/0/0/0";
+    }
+    console.log(URL);
+   
+    windows.open(URL,"_self");
 
-    // Create an array with input objects
-    var inputArray = [ 
-        {key: 'datetime', value: inputDateTime.property("value")},
-        {key: 'city', value: inputCity.property("value").toLowerCase()},
-        {key: 'state', value: inputState.property("value").toLowerCase()},
-        {key: 'country', value: inputCountry.property("value").toLowerCase()},
-        {key: 'shape', value: inputShape.property("value").toLowerCase()}
-    ];
-
-    // Filter for each input element
-    inputArray.forEach(element => {
-        if (element.value != ""){ // Only filter if current value is not blank
-            filteredData = filteredData.filter(filteredRow => filteredRow[element.key]=== element.value);
-        }
-    });
-
-    // Display filtered data
-    showData (filteredData, tbody);
 };

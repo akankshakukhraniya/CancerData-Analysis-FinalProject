@@ -34,47 +34,32 @@
         <div class="col-md-2">
           <aside class="filters">
             <div class="panel panel-default">
-              <div class="panel-heading">Filter SEARCH</div>
+              <div class="panel-heading">Parameters</div>
               <div class="panel-body">
                 <form id="form">
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
-                        <label for="date">Enter a Date</label>
-                        <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
-                        <label for="date">Enter a City</label>
-                        <input class="form-control" id="city" type="text" placeholder="<city name>">
-                        <label for="date">Enter a State</label>
-                        <input class="form-control" id="state" type="text" placeholder="<state name>">
-                        <label for="date">Enter a Country</label>
-                        <input class="form-control" id="country" type="text" placeholder="<country name>">
-                        <label for="date">Enter a Shape</label>
-                        <input class="form-control" id="shape" type="text" placeholder="<shape desc>">
+                        <label for="date">Enter race/origin</label>
+                        <input class="form-control" id="race_origin" type="text" placeholder="<race origin>">
+                        <label for="date">Enter survival months</label>
+                        <input class="form-control" id="survival_months" type="text" placeholder="<survival months>">
+                        <label for="date">Enter tumour classification</label>
+                        <input class="form-control" id="tumour_classification" type="text" placeholder="<tumour classification>">
+                        <label for="date">Enter tumor size</label>
+                        <input class="form-control" id="tumor_size" type="text" placeholder="<tumor size>">
                       </li>
                     </ul>
                   </div>
-                  <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                  <button id="csr-btn" type="button" class="btn btn-default">Calculate Rate</button>
                 </form>
               </div>
             </div>
           </aside>
         </div>
         <div class="col-md-10">
-          <div id="table-area" class="">
-            <table id="survival-rate-table" class="table table-striped">
-              <thead>
-                <tr>
-                  <th class="table-head">Date</th>
-                  <th class="table-head">City</th>
-                  <th class="table-head">State</th>
-                  <th class="table-head">Country</th>
-                  <th class="table-head">Shape</th>
-                  <th class="table-head">Duration</th>
-                  <th class="table-head">Comments</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+          <div id="csr" class="">
+            <h1></value></h1>
           </div>
         </div>
       </div>
@@ -87,7 +72,6 @@
   <script>
     var cancer_data = '{{ data | tojson | safe }}';
   </script>
-  <script type="text/javascript" src="/static/js/data-survival-rate.js"></script>
   <script type="text/javascript" src="/static/js/app-survival-rate.js"></script>
 
 </body>
