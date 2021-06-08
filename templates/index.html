@@ -40,14 +40,13 @@
       </div>
     </div>
   </nav>
-
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-12 ms-auto bg-white">
         <h2 class="text-info mt-2"> Cancer Research Project</h2>
         <hr>
         
-        <img src="/static/images/cancer_.jpg" alt="" class="w-100 float-start mt-4 mb-4">
+        <img src="/Images/cancer_.jpg" alt="" class="w-100 float-start mt-4 mb-4">
      
         
       </div>
@@ -56,18 +55,87 @@
         <div class="col-md-12 ms-auto bg-white mt-2">
           <h3 class="text-info mt-3"> </h3>
       <p class="text_"> Extract and analyze Cancer data by showing which states have the most cancer cases and the types of cancer present, along with age, testing, and race. </p>
-      <br>
       <p class="text_"> We start the project focusing in the United States Cancer Data. After displaying several visuals that show different cancer statistics, we specifacilly focus on Wisconsin data.</p>
-      <br>
       <p class="text_"> Once we analize Winsconsin data, we are able to create a machine learning algorithm to determine the diagnostic of a cancer patient once we previoulsly established his/her main symtoms.</p>
       <br>
+      
+      <h3 class="text-info mt-3">INTRODUCTION  </h3>
+      <hr>
+      <p class="text_"> How cancer begins?
+        Cells are the basic units that make up the human body. Cells grow and divide to make new cells as the body needs them. Usually, cells die when they get too old or damaged. Then, new cells take their place.
+        Cancer begins when genetic changes interfere with this orderly process. Cells start to grow uncontrollably. These cells may form a mass called a tumor. A tumor can be cancerous or benign. A cancerous tumor is malignant, meaning it can grow and spread to other parts of the body. A benign tumor means the tumor can grow but will not spread.
+        Some types of cancer do not form a tumor. These include leukemias, most types of lymphoma, and myeloma.
+        Doctors divide cancer into types based on where it begins. Four main types of cancer are:<br>
+        <br><strong>1. Carcinomas.</strong> A carcinoma begins in the skin or the tissue that covers the surface of internal organs and glands. Carcinomas usually form solid tumors. They are the most common type of cancer. Examples of carcinomas include prostate cancer, breast cancer, lung cancer, and colorectal cancer.<br>
+        <br>
+        <strong>2. Sarcomas.</strong> A sarcoma begins in the tissues that support and connect the body. A sarcoma can develop in fat, muscles, nerves, tendons, joints, blood vessels, lymph vessels, cartilage, or bone. <br>
+                            <br>
+                            <strong>3. Leukemias.</strong> Leukemia is a cancer of the blood. Leukemia begins when healthy blood cells change and grow uncontrollably. The 4 main types of leukemia are acute lymphocytic leukemia, chronic lymphocytic leukemia, acute myeloid leukemia, and chronic myeloid leukemia.<br>
+                            <br>
+                            <strong>4. Lymphomas.</strong> Lymphoma is a cancer that begins in the lymphatic system. The lymphatic system is a network of vessels and glands that help fight infection. There are 2 main types of lymphomas: Hodgkin lymphoma and non-Hodgkin lymphoma.  </p>
+      <br>
+      <br>
+      <div class="container">
+        <div class="row mt-1">
+        <div class="col-md-12 ms-auto bg-white">
+            
+            
+            <img src="/static/images/cancer_survivors_data.png" alt="" class="w-100 float-start mt-4 mb-4">
+         
+            
+          </div>
+    
+          <div class="row mt-4">
+            <div class="col-md-12 ms-auto bg-white mt-2">
+              <h3 class="text-info mt-3"> </h3>
+      <br>
+      <h3 class="text-info mt-3"> RESEARCH </h3>
+      <hr>
+      <p class="text_"> From Wisconsin Cancer Database, we analyze 569 individuals and check their correlation and how accuary the logistic regression model can predict the diagnosis of a cancer patient</p>
+      <p class="text_"> Derived from UCI Machine Learning Repository, Wisconsin cancer dataset is available in python's sklearn library.</p>
+      <p class="text_">
+        <strong>Wisconsin dataset is also available through the UW CS ftp server:</strong> 
+        <br>
+      --> ftp ftp.cs.wisc.edu
+        <br>
+      --> cd math-prog/cpo-dataset/machine-learn/WDBC/
+      <br>
+      <br>
+        <strong>Also can be found on UCI Machine Learning Repository:</strong>
+        <br> https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29
+        <br>
+        <br>
+        <strong>Attribute Information:</strong>
+        <br>
+        1) ID number  <br>
+        2) Diagnosis (M = malignant, B = benign)
+        <br>
+        <br>
+        <strong>Ten real-valued features are computed for each cell nucleus: </strong><br>
+        
+        a) radius (mean of distances from center to points on the perimeter)  <br>
+        b) texture (standard deviation of gray-scale values)  <br>
+        c) perimeter  <br>
+        d) area  <br>
+        e) smoothness (local variation in radius lengths)  <br>
+        f) compactness (perimeter^2 / area - 1.0)  <br>
+        g) concavity (severity of concave portions of the contour)  <br>
+        h) concave points (number of concave portions of the contour)  <br>
+        i) symmetry  <br>
+        j) fractal dimension ("coastline approximation" - 1)
+        <br>
+        <br>
+        <strong>Class distribution:</strong> 357 benign, 212 malignant </p>
       <br>
       <br>
       <br>
       <br>
     </div>
 
+
   </div>
+
+
 <script>
   var cancer_data = '{{ data | tojson | safe }}';
 </script>
