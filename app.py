@@ -23,6 +23,7 @@ def index():
 
 @app.route("/<race_origin>/<survival_months>/<tumour_classification>/<tumor_size>") 
 def csr(race_origin,survival_months,tumour_classification,tumor_size):
+    print(f"route: /{race_origin}/{survival_months}/{tumour_classification}/{tumor_size}")
     cursor = mongo.db.seer_data.find()
     df= pd.DataFrame(list(cursor))
     print(df.head())
