@@ -93,7 +93,7 @@ def breast_survival_test(cancer_df):
     return results
 
 
-def cancer_survival_rate(df,race_origin,survival_months,tumour_classification,tumor_size):
+def cancer_survival_rate(df,race_origin,survival_months,tumor_size):
     # %%
     """
     ## Machine Learning
@@ -131,8 +131,17 @@ def cancer_survival_rate(df,race_origin,survival_months,tumour_classification,tu
     # %%
     """
     ### Preprocessing Data 
-    """
     
+    """
+    race_origin = int(race_origin) 
+    survival_months = int(survival_months) 
+    tumor_size = int(tumor_size) 
+    
+    # If zero values then return
+    if (race_origin==99):
+        results = {
+            "csr": ""}
+        return results
     # %%
     # Assign y (target) = Dependent variable
 
@@ -142,30 +151,18 @@ def cancer_survival_rate(df,race_origin,survival_months,tumour_classification,tu
     transformed_df = df.copy()
     le_race_origin = LabelEncoder()
     transformed_df['race_origin'] = le_race_origin.fit_transform(transformed_df['race_origin'])
-    race_origin_master_dict = master_dict(le_race_origin,df,'race_origin')
-    le_survival_months = LabelEncoder()
-    transformed_df['survival_months'] = le_survival_months.fit_transform(transformed_df['survival_months'])
     le_status = LabelEncoder()
     transformed_df['status'] = le_status.fit_transform(transformed_df['status'])
-    le_tumour_classification = LabelEncoder()
-    transformed_df['tumour_classification'] = le_tumour_classification.fit_transform(transformed_df['tumour_classification'])
-    tumour_classification_master_dict = master_dict(le_tumour_classification,df,'tumour_classification')
     le_death_cause = LabelEncoder()
     transformed_df['death_cause'] = le_death_cause.fit_transform(transformed_df['death_cause'])
     le_death_classification = LabelEncoder()
     transformed_df['death_classification'] = le_death_classification.fit_transform(transformed_df['death_classification'])
-    le_tumor_size = LabelEncoder()
-    transformed_df['tumor_size'] = le_tumor_size.fit_transform(transformed_df['tumor_size'])
     y = transformed_df["status"].copy()
     X = transformed_df.drop("status", axis=1)
     X = X.drop("_id", axis=1)
+    X = X.drop("tumour_classification", axis=1)
 
-    if (race_origin=='0'):
-        results = {
-            "race_origin_master_dict" : race_origin_master_dict,
-            "tumour_classification_master_dict": tumour_classification_master_dict,
-            "csr": ""}
-        return results
+    
     # %%
     """
     Split our data into training and testing
@@ -211,11 +208,8 @@ def cancer_survival_rate(df,race_origin,survival_months,tumour_classification,tu
     testing_data_score = round(classifier.score(X_test_scaled, y_test)*100,4)
 
     # Make predictions 
-    race_origin_encoded = get_encoded_value(le_race_origin,df,'race_origin',race_origin)
-    tumour_classification_encoded = get_encoded_value(le_tumour_classification,df,'tumour_classification',tumour_classification)
-    data = {'diagnosis_year': 2018, 'race_origin': race_origin_encoded, 'survival_months': survival_months,
-        'tumour_classification': tumour_classification_encoded, 'death_cause': 5,
-        'death_classification': 0, 'tumor_size': tumor_size}
+    data = {'diagnosis_year': 2018, 'race_origin': race_origin, 'survival_months': survival_months,
+        'death_cause': 5,'death_classification': 0, 'tumor_size': tumor_size}
     X_predict = pd.DataFrame(data,index=[0])
     X_predict_scaled = X_scaler.transform(X_predict)
 
@@ -226,8 +220,6 @@ def cancer_survival_rate(df,race_origin,survival_months,tumour_classification,tu
     else:
         csr = "LOW"
     results = {
-        "race_origin_master_dict" : race_origin_master_dict,
-        "tumour_classification_master_dict": tumour_classification_master_dict,
         "csr": csr
     }
     return results

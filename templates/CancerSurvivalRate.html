@@ -41,11 +41,16 @@
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
                         <label for="date">Enter race/origin</label>
-                        <input class="form-control" id="race_origin" type="text" placeholder="<race origin>">
+                        <select id="race_origin">
+                          <option value="0">Non-Hispanic White</option>
+                          <option value="1">Hispanic (All Races)</option>
+                          <option value="2">Non-Hispanic Asian or Pacific Islander</option>
+                          <option value="3">Non-Hispanic Black</option>
+                          <option value="4">Non-Hispanic Unknown Race</option>
+                          <option value="5">Non-Hispanic American Indian/Alaska Native</option>
+                        </select>
                         <label for="date">Enter survival months</label>
                         <input class="form-control" id="survival_months" type="text" placeholder="<survival months>">
-                        <label for="date">Enter tumour classification</label>
-                        <input class="form-control" id="tumour_classification" type="text" placeholder="<tumour classification>">
                         <label for="date">Enter tumor size</label>
                         <input class="form-control" id="tumor_size" type="text" placeholder="<tumor size>">
                       </li>
