@@ -32,6 +32,7 @@ consistant formatting and sizing using Bootstrap.
 
 ## Visualizations
 The visualizations the team generated told the story of where we focused on the actual Cancer data it will show different information based on what your looking for. The focus of this project was on the age, race, sex, location, death rates, diagnosis and survival rates of Cancer. 
+ https://public.tableau.com/app/profile/akanksha4588/viz/CancerResearch-DataAnalyst-Project/CancerResearchStats
 
 
 
