@@ -14,7 +14,8 @@ We’re a team who came together to come up with a statistical analysis on Cance
 
 ## Data
 
-Data was obtained through the website Kaggle containing different data sets on csv files. 
+Data was obtained through the website Kaggle, Wisconsin containing different data sets on csv files. 
+CDC Data - not open source, in millions.
 
 
 ## Database Creation
